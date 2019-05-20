@@ -24,11 +24,17 @@ package com.atinternet.tracker.ecommerce.objectproperties;
 
 import com.atinternet.tracker.RequiredPropertiesDataObject;
 
+import java.util.Random;
+
 public class ECommerceCart extends RequiredPropertiesDataObject {
+
+    private String version;
 
     public ECommerceCart() {
         super();
+        version = String.valueOf(new Random().nextInt(100_000_000) + 10_000_000);
         /// STRING
+        propertiesPrefix.put("version", "s");
         propertiesPrefix.put("id", "s");
         propertiesPrefix.put("currency", "s");
 
@@ -42,5 +48,9 @@ public class ECommerceCart extends RequiredPropertiesDataObject {
         /// LONG
         propertiesPrefix.put("quantity", "n");
         propertiesPrefix.put("nbdistinctproduct", "n");
+    }
+
+    public String getVersion() {
+        return version;
     }
 }
